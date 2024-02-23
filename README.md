@@ -22,6 +22,15 @@ Ergänzen Sie hier die notwendigen Code-Ausschnitte, um zu zeigen, wie man es ma
 
 ### Bewegung animieren
 
+```csharp
+private void tmrGameTick_Tick(object sender, EventArgs e)
+{
+    //Position verändern mit Refresh wird neu "Gezeichnet" und die neue position wurde eingenommen
+    this.Refresh();
+}
+```
+
+
 ### Objekte mit Tasten steuern
 
 ```csharp
@@ -56,13 +65,13 @@ Ergänzen Sie hier die notwendigen Code-Ausschnitte, um zu zeigen, wie man es ma
 
 ```csharp
 
-            // Überprüfen mit ClientSize.Width oder ClientSize.Height
-            if(e.KeyCode == Keys.Right)
-            {
-                if (spieler.X + 60 > this.ClientSize.Width)
-                    return;
-                spieler.X = spieler.X + 60;
-            }
+// Überprüfen mit ClientSize.Width oder ClientSize.Height
+if(e.KeyCode == Keys.Right)
+{
+    if (spieler.X + 60 > this.ClientSize.Width)
+        return;
+    spieler.X = spieler.X + 60;
+}
 
 ```
 ### Spiel pausieren
@@ -75,7 +84,6 @@ tmrGameTick.Stop();
 tmrGameTick.Start();
 
 ```
-### Ihr schönstes Ergebnis
 
 ### Bilder als Grafik zu verwenden
 ```csharp
@@ -89,18 +97,18 @@ e.Graphics.DrawImage(image, new Rectangle(aktuellesHindernis.X, aktuellesHindern
 ### Bilder rund machen 
 
 ```csharp
-            Bitmap playerImage = new Bitmap("../../marceleris.jpg");
-            Bitmap roundedImage = new Bitmap(playerImage.Width, playerImage.Height);
-            using (Graphics g = Graphics.FromImage(roundedImage))
-            {
-                // Grafikobjekt erstellen und als Kreis konfigurieren
-                GraphicsPath path = new GraphicsPath();
-                path.AddEllipse(0, 0, roundedImage.Width, roundedImage.Height);
-                // Die Zeichenfläche des Grafikobjekts auf den Kreis beschränken
-                g.SetClip(path);
-                // Das Originalbild im Kreis zeichnen
-                g.DrawImage(playerImage, 0, 0, playerImage.Width, playerImage.Height);
-            }
+Bitmap playerImage = new Bitmap("../../marceleris.jpg");
+Bitmap roundedImage = new Bitmap(playerImage.Width, playerImage.Height);
+using (Graphics g = Graphics.FromImage(roundedImage))
+{
+// Grafikobjekt erstellen und als Kreis konfigurieren
+GraphicsPath path = new GraphicsPath();
+path.AddEllipse(0, 0, roundedImage.Width, roundedImage.Height);
+// Die Zeichenfläche des Grafikobjekts auf den Kreis beschränken
+g.SetClip(path);
+// Das Originalbild im Kreis zeichnen
+g.DrawImage(playerImage, 0, 0, playerImage.Width, playerImage.Height);
+}
 
-            e.Graphics.DrawImage(roundedImage, spieler);
+e.Graphics.DrawImage(roundedImage, spieler);
 ```
