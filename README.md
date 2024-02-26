@@ -91,6 +91,10 @@ tmrGameTick.Start();
 Bitmap image = new Bitmap("../../Download.jpg");
 e.Graphics.DrawImage(image, new Rectangle(aktuellesHindernis.X, aktuellesHindernis.Y, 
 
+//alternativ form bauen 
+g.FillRectangle(new SolidBrush(color), new Rectangle(x, y, width, height));
+    
+
 ```
 
 
@@ -111,4 +115,12 @@ g.DrawImage(playerImage, 0, 0, playerImage.Width, playerImage.Height);
 }
 
 e.Graphics.DrawImage(roundedImage, spieler);
+
+```
+
+
+### Random color von random
+
+```csharp
+        return Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
 ```
